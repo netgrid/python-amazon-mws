@@ -61,7 +61,7 @@ class OutboundShipments(MWS):
         raise NotImplementedError
 
     @next_token_action('ListAllFulfillmentOrders')
-    def list_all_fulfillment_orders(self, next_token=None):
+    def list_all_fulfillment_orders(self, next_token=None, query_start_date_time=None):
         """
         Returns a list of fulfillment orders fulfilled after (or at) a specified date.
 
@@ -70,7 +70,14 @@ class OutboundShipments(MWS):
         Docs:
         http://docs.developer.amazonservices.com/en_US/fba_outbound/FBAOutbound_ListAllFulfillmentOrders.html
         """
-        raise NotImplementedError
+
+        data ={
+            'Action':'ListAllFulfillmentOrders',
+            'QueryStartDateTime':query_start_date_time
+        }
+
+        return self.make_request(data)
+        #raise NotImplementedError
 
     def list_all_fulfillment_orders_by_next_token(self, token):
         """

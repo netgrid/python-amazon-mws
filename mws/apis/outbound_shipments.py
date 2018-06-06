@@ -75,9 +75,7 @@ class OutboundShipments(MWS):
             'Action':'ListAllFulfillmentOrders',
             'QueryStartDateTime':query_start_date_time
         }
-
         return self.make_request(data)
-        #raise NotImplementedError
 
     def list_all_fulfillment_orders_by_next_token(self, token):
         """
